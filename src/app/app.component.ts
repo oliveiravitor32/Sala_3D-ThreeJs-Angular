@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,23 @@ export class AppComponent implements OnInit {
   private gridHelper!: THREE.GridHelper;
   private orbitControls!: OrbitControls;
   private cube!: THREE.Mesh;
+  private character!: THREE.Group<THREE.Object3DEventMap>;
+  private mixer!: THREE.AnimationMixer;
+  private clock!: THREE.Clock;
+
+  private allActions: any = [];
+
+  private baseActions: any = {
+    idle: { weight: 1 },
+    walk: { weight: 0 },
+  };
+
+  private additiveActions: any = {
+    sneak_pose: { weight: 0 },
+    sad_pose: { weight: 0 },
+    agree: { weight: 0 },
+    headShake: { weight: 0 },
+  };
 
   initThreeJS(): void {
     // Scene
@@ -72,18 +90,45 @@ export class AppComponent implements OnInit {
       this.renderer.domElement
     );
 
-    // Add a Cube
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    this.cube = new THREE.Mesh(geometry, material);
-    this.cube.position.y = 0;
-    this.scene.add(this.cube);
+    // //Add a Cube
+    // const geometry = new THREE.BoxGeometry(1, 1, 1);
+    // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    // this.cube = new THREE.Mesh(geometry, material);
+    // this.cube.position.y = 0;
+    // this.scene.add(this.cube);
+
     this.addScenario();
+
+    // Add character
+    this.addCharacter();
 
     // Handle resizing
     // window.addEventListener('resize', this.onWindowResize.bind(this));
 
     this.animate();
+  }
+
+  addCharacter() {
+    // Create a clock to track time for animations
+    this.clock = new THREE.Clock();
+
+    const loader = new GLTFLoader();
+    loader.load('../assets/models/toon_cat_free.glb', (gltf) => {
+      this.character = gltf.scene;
+      this.character.scale.set(0.004, 0.004, 0.004); // Adjust the size of the model if needed
+      this.character.position.set(0, 0, 0); // Position the character in the scene
+
+      // Create an AnimationMixer to handle animations
+      this.mixer = new THREE.AnimationMixer(this.character);
+
+      // Go through each animation in the GLTF file and add it to the mixer
+      gltf.animations.forEach((clip) => {
+        const action = this.mixer.clipAction(clip);
+        action.play(); // Start playing the animation
+      });
+
+      this.scene.add(this.character);
+    });
   }
 
   addScenario() {
@@ -125,6 +170,12 @@ export class AppComponent implements OnInit {
     // Rotate the cube
     // this.cube.rotation.x += 0.01;
     // this.cube.rotation.y += 0.01;
+
+    // Update the animation mixer (progresses animations)
+    if (this.mixer) {
+      const delta = this.clock.getDelta();
+      this.mixer.update(delta);
+    }
 
     // Render the scene
     this.renderer.render(this.scene, this.camera);
