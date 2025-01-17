@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as THREE from 'three';
-import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+// @ts-ignore
+import { GLTF, GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
 import { ThreeService } from '../../services/three.service';
 
 @Component({
@@ -31,7 +33,7 @@ export class CharacterComponent implements OnInit {
     this.clock = new THREE.Clock();
 
     const loader = new GLTFLoader();
-    loader.load('../../assets/models/toon_cat_free.glb', (gltf) => {
+    loader.load('../../assets/models/toon_cat_free.glb', (gltf: any) => {
       this.character = gltf.scene;
       this.character.scale.set(0.004, 0.004, 0.004); // Adjust the size of the model if needed
       this.character.position.set(0, 0, 6.8); // Position the character in the scene

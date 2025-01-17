@@ -1,6 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+
+// @ts-ignore
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
 import { ThreeService } from '../../services/three.service';
 import { CharacterComponent } from '../character/character.component';
 
