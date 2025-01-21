@@ -6,11 +6,12 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 import { ThreeService } from '../../services/three.service';
 import { CharacterComponent } from '../character/character.component';
+import { ViolinComponent } from '../violin/violin.component';
 
 @Component({
   selector: 'app-room',
   standalone: true,
-  imports: [CharacterComponent],
+  imports: [CharacterComponent, ViolinComponent],
   templateUrl: './room.component.html',
   styleUrl: './room.component.css',
 })
@@ -59,7 +60,7 @@ export class RoomComponent implements OnInit {
     this.threeService.addObject(gridHelper);
 
     // Renderer
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ antialias: true }); // Enable Anti-Aliasing
     renderer.setSize(window.innerWidth, window.innerHeight);
     this.rendererContainer.nativeElement.appendChild(renderer.domElement);
     this.threeService.setRenderer(renderer);
@@ -106,8 +107,6 @@ export class RoomComponent implements OnInit {
     requestAnimationFrame(() => this.animate());
 
     // Render the scene
-    this.threeService
-      .getRenderer()
-      .render(this.threeService.getScene(), this.threeService.getCamera());
+    this.threeService.render();
   }
 }
