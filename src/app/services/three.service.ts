@@ -37,5 +37,9 @@ export class ThreeService {
     this.scene.add(object);
   }
 
+  public render() {
+    this.renderer.render(this.scene, this.camera);
+  }
+
   constructor() {}
 }
