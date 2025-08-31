@@ -1,27 +1,62 @@
-# ThreeJsExperiment
+# Sala 3D - Three.js + Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+<p align="center">
+  <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular Badge">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript Badge">
+  <img src="https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white" alt="Three.js Badge">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5 Badge">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3 Badge">
+</p>
 
-## Development server
+## 📝 Visão Geral
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Este projeto é uma implementação de Three.js com Angular de uma sala/quarto 3D para visualização de objetos, movimentações e iluminação.
 
-## Code scaffolding
+🌐 **[Demo ao vivo](https://sala-3-d-three-js-angular-oliveiravitor32s-projects.vercel.app/)**
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🚀 Funcionalidades
 
-## Build
+- 🏠 Ambiente 3D de uma sala/quarto
+- 💡 Sistema de iluminação dinâmica
+- 🎮 Controles de movimentação
+- 📱 Interface responsiva
+- ⚡ Renderização em tempo real
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## ⚙️ Instalação e Configuração
 
-## Running unit tests
+1. Clone o repositório:
+```bash
+git clone https://github.com/oliveiravitor32/Sala_3D-ThreeJs-Angular.git
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Navegue até o diretório do projeto:
+```bash
+cd Sala_3D-ThreeJs-Angular
+```
 
-## Running end-to-end tests
+3. Instale as dependências:
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. Inicie o servidor de desenvolvimento:
+```bash
+ng serve
+```
 
-## Further help
+5. Abra seu navegador e navegue até `http://localhost:4200`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 🛠️ Tecnologias Utilizadas
+
+- **Angular** - Framework principal
+- **Three.js** - Biblioteca para gráficos 3D
+- **TypeScript** - Linguagem de programação
+- **HTML5/CSS3** - Estrutura e estilização
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👨‍💻 Autor
+
+Desenvolvido por [oliveiravitor32](https://github.com/oliveiravitor32)
