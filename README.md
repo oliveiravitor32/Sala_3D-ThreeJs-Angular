@@ -18,8 +18,7 @@ Este projeto é uma implementação de Three.js com Angular de uma sala/quarto 3
 
 - 🏠 Ambiente 3D de uma sala/quarto
 - 💡 Sistema de iluminação dinâmica
-- 🎮 Controles de movimentação
-- 📱 Interface responsiva
+- 🎮 Controles de movimentação de camera
 - ⚡ Renderização em tempo real
 
 ## ⚙️ Instalação e Configuração
